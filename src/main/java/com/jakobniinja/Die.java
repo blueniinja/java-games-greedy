@@ -39,6 +39,17 @@ public class Die extends JPanel {
     });
   }
 
+  public Die(int value) {
+    this.value = value;
+
+    addMouseListener(new MouseAdapter() {
+      @Override
+      public void mouseReleased(MouseEvent e) {
+        click();
+      }
+    });
+  }
+
   private void click() {
     if (state == AVAILABLE) {
       state = SELECTED;
@@ -108,6 +119,16 @@ public class Die extends JPanel {
     repaint();
 
     return i;
+  }
+
+  public void hold() {
+    state = HELD;
+    repaint();
+  }
+
+  public void makeAvailable() {
+    state = AVAILABLE;
+    repaint();
   }
 
   public boolean isAvailable() {

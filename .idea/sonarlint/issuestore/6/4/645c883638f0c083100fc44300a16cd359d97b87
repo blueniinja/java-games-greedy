@@ -1,11 +1,13 @@
 
-z
-java:S1135<"2Complete the task associated to this TODO comment.(àÅşÜúÿÿÿÿ8è•Ø©ü1J$ce2e3dbb-6bf3-439b-945e-1f0c521fbe72
-z
-java:S1128"7Remove this unused import 'java.awt.HeadlessException'.(€ï›Ú8é•Ø©ü1J$a918d29a-1aeb-4046-aa22-4e86fb9127b3
-o
-java:S1128",Remove this unused import 'java.util.Queue'.(Äá™ô8é•Ø©ü1J$93ac5a9a-e6f8-490d-9a5b-3c09827fbfe7
+ 
+java:S1450"XRemove the "newPoints" field and declare it as a local variable in the relevant methods.(°¹ÁÛıÿÿÿÿ8¾ÜïÊü1J$fd8c39b2-5b99-4863-8154-1a19bd395330
+v
+java:S1135£"2Complete the task associated to this TODO comment.(êã…Ÿ8—…òÊü1J$875e7641-f4a7-4d35-918f-bf5b4c52c620
+l
+java:S1068"*Remove this unused "points" private field.(şÖüC8ÑÜïÊü1J$1fe830db-30af-40b7-bfd9-53e4f58db9db
 u
-java:S1128"2Remove this unused import 'java.util.jar.JarFile'.(¾¾”ß8é•Ø©ü1J$d9c882b2-658a-496e-8134-351af88d42a5
-‹
-java:S1128"HRemove this unused import 'javax.swing.UnsupportedLookAndFeelException'.(–¼ıÅ8é•Ø©ü1J$bfd2380e-619b-4af1-9f89-955aaf94dd21
+java:S1068"-Remove this unused "newPoints" private field.(°¹ÁÛıÿÿÿÿ8ÑÜïÊü1J$474d6c07-5174-4204-bc71-3bc9c15030c5
+q
+java:S1068")Remove this unused "score" private field.(ğ„É«ÿÿÿÿÿ8ÑÜïÊü1J$91685b3f-d15f-4070-8c3c-73163fe45d9d
+q
+java:S1068")Remove this unused "round" private field.(É÷ààşÿÿÿÿ8ÑÜïÊü1J$8a336b7c-a5d3-454c-810d-c9e022e15d26
