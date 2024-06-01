@@ -5,10 +5,15 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.WindowConstants;
@@ -38,6 +43,14 @@ public class Greedy extends JFrame {
   private JButton rollButton = new JButton("Roll");
 
   private Die[] dice = new Die[6];
+
+  private int highScore = 0;
+
+  private JLabel highScoreLabel = new JLabel();
+
+  public static final String HIGH_SCORE_TEXT = "The previous highscore was: ";
+
+  private static final String FILENAME = "highscore.txt";
 
   public Greedy() {
     initGUI();
@@ -104,14 +117,14 @@ public class Greedy extends JFrame {
     dicePanel.setBackground(Color.GREEN);
     diceRowPanel.add(dicePanel);
 
-    dice[0] = new Die(1);
-    dice[1] = new Die(2);
-    dice[2] = new Die(3);
-    dice[3] = new Die(4);
-    dice[4] = new Die(5);
-    dice[5] = new Die(6);
-
     for (int i = 0; i < 6; i++) {
+      dice[i] = new Die();
+      dice[i].addMouseListener(new MouseAdapter() {
+        @Override
+        public void mouseReleased(MouseEvent e) {
+          clickedDie();
+        }
+      });
       dicePanel.add(dice[i]);
     }
 
@@ -122,9 +135,93 @@ public class Greedy extends JFrame {
     buttonPanel.setBackground(Color.BLACK);
     add(buttonPanel, BorderLayout.PAGE_END);
 
+    rollButton.setEnabled(false);
+    rollButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        updatePoints();
+        rollRemainingDice();
+        rollButton.setEnabled(false);
+      }
+    });
+
     buttonPanel.add(rollButton);
     JButton endRoundButton = new JButton("End Round");
+
+    endRoundButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        endRound();
+      }
+    });
     buttonPanel.add(endRoundButton);
+  }
+
+  private void endRound() {
+    if (isValidSelection() && newPoints > 0) {
+      score += points + newPoints;
+    } else {
+      String message = "Do you want to play again?";
+      int option = JOptionPane.showConfirmDialog(this, message, "Play Again?", JOptionPane.YES_NO_OPTION);
+
+      if (option == JOptionPane.YES_OPTION) {
+        score = 0;
+        points = 1;
+        scoreLabel.setText("0");
+        roundLabel.setText("1");
+        rollAllDice();
+      } else {
+        System.exit(0);
+      }
+    }
+    points = 0;
+    newPoints = 0;
+    pointsLabel.setText("0");
+    scoreLabel.setText("" + score);
+    if (round < 10) {
+      round++;
+      roundLabel.setText("" + round);
+      rollAllDice();
+    }
+  }
+
+  private void rollRemainingDice() {
+    int count = 0;
+    for (int i = 0; i < 6; i++) {
+      if (dice[i].isSelected()) {
+        dice[i].hold();
+      } else if (!dice[i].isHeld()) {
+        dice[i].roll();
+        count++;
+      }
+    }
+    if (count == 0) {
+      rollAllDice();
+    }
+  }
+
+  private void rollAllDice() {
+    for (int i = 0; i < 6; i++) {
+      dice[i].makeAvailable();
+      dice[i].roll();
+    }
+    rollButton.setEnabled(false);
+  }
+
+  private void updatePoints() {
+    points += newPoints;
+    pointsLabel.setText("" + points);
+    newPoints = 0;
+  }
+
+  private void clickedDie() {
+    if (isValidSelection()) {
+      rollButton.setEnabled(true);
+    } else {
+      rollButton.setEnabled(false);
+    }
+
+    pointsLabel.setText("" + (points + newPoints));
   }
 
   public boolean isValidSelection() {
@@ -147,6 +244,47 @@ public class Greedy extends JFrame {
         count[2] == 1 && count[3] == 1 &&
         count[4] == 1 && count[5] == 1) {
       newPoints += 250;
+    } else {
+      for (int i = 0; i < count.length; i++) {
+        switch (count[i]) {
+          case 1:
+            if (i == 0) {
+              newPoints += 10;
+            } else if (i == 4) {
+              newPoints += 5;
+            } else {
+              valid = false;
+            }
+            break;
+          case 2:
+            if (i == 0) {
+              newPoints += 20;
+            } else if (i == 4) {
+              newPoints += 10;
+            } else {
+              valid = false;
+            }
+            break;
+
+          case 3:
+            if (i == 0) {
+              newPoints += 100;
+            } else {
+              newPoints += 10 * (i + 1);
+            }
+            break;
+
+          case 4:
+            newPoints += 250;
+            break;
+          case 5:
+            newPoints += 300;
+            break;
+          case 6:
+            newPoints += 500;
+            break;
+        }
+      }
     }
     return valid;
   }
@@ -160,6 +298,6 @@ public class Greedy extends JFrame {
     }
 
     EventQueue.invokeLater(Greedy::new);
-    // TODO: complete Listing 9-33
+    // TODO: complete Listing 9-51
   }
 }

@@ -1,13 +1,18 @@
 
- 
-java:S1450"XRemove the "newPoints" field and declare it as a local variable in the relevant methods.(°¹ÁÛıÿÿÿÿ8¾ÜïÊü1J$fd8c39b2-5b99-4863-8154-1a19bd395330
-v
-java:S1135£"2Complete the task associated to this TODO comment.(êã…Ÿ8—…òÊü1J$875e7641-f4a7-4d35-918f-bf5b4c52c620
-l
-java:S1068"*Remove this unused "points" private field.(şÖüC8ÑÜïÊü1J$1fe830db-30af-40b7-bfd9-53e4f58db9db
+q
+java:S1604‹"(Make this anonymous inner class a lambda(ÿÇŸ¨úÿÿÿÿ8ú£±§ı1J$b7c20616-28b3-438e-a5f9-a92d77dd9b83
+k
+java:S1604—"(Make this anonymous inner class a lambda(øƒ¯$8û£±§ı1J$e6c9dfc1-edc6-44d2-b22c-1dbf9bc609a7
+†
+java:S1126Ú"BReplace this if-then-else statement by a single method invocation.(İ‘š8èÍ±§ı1J$6883808c-8912-43c0-a5ad-bf076412d7ee
+–
+java:S3776ã"RRefactor this method to reduce its Cognitive Complexity from 29 to the 15 allowed.(•çÄ8éÍ±§ı1J$8c1007ff-5aff-44cf-a0b9-6d63672905c7
+j	java:S131ù""Add a default case to this switch.(õ½èõÿÿÿÿÿ8êÍ±§ı1J$73d4030e-c5a5-4f61-ae84-cfa76661873c
+{
+java:S1135­"2Complete the task associated to this TODO comment.(İ÷Çòûÿÿÿÿ8ëÍ±§ı1J$dc12904a-e7ab-44dd-8125-8ea5030ae0bd
+o
+java:S1068/"-Remove this unused "highScore" private field.(¤ãÒ8¯¶±§ı1J$375468af-6879-4a2b-8dea-9408d9bb46c6
 u
-java:S1068"-Remove this unused "newPoints" private field.(°¹ÁÛıÿÿÿÿ8ÑÜïÊü1J$474d6c07-5174-4204-bc71-3bc9c15030c5
-q
-java:S1068")Remove this unused "score" private field.(ğ„É«ÿÿÿÿÿ8ÑÜïÊü1J$91685b3f-d15f-4070-8c3c-73163fe45d9d
-q
-java:S1068")Remove this unused "round" private field.(É÷ààşÿÿÿÿ8ÑÜïÊü1J$8a336b7c-a5d3-454c-810d-c9e022e15d26
+java:S10681"2Remove this unused "highScoreLabel" private field.(ÆïúÕ8¯¶±§ı1J$100d474f-055e-450d-818a-05a24542b2e7
+t
+java:S10685",Remove this unused "FILENAME" private field.(ÑÇ¾Üüÿÿÿÿ8¯¶±§ı1J$2faf97f7-1798-435d-86c9-e2ef14647008
