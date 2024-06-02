@@ -1,18 +1,14 @@
 
 q
-java:S1604‹"(Make this anonymous inner class a lambda(ÿÇŸ¨úÿÿÿÿ8ú£±§ı1J$b7c20616-28b3-438e-a5f9-a92d77dd9b83
+java:S1604–"(Make this anonymous inner class a lambda(ÿÇŸ¨úÿÿÿÿ8ÿè›Íı1J$1c526612-8c76-4619-9034-4cd311c3aa4a
 k
-java:S1604—"(Make this anonymous inner class a lambda(øƒ¯$8û£±§ı1J$e6c9dfc1-edc6-44d2-b22c-1dbf9bc609a7
+java:S1604¢"(Make this anonymous inner class a lambda(øƒ¯$8ÿè›Íı1J$bd6427d1-d33c-4e07-a636-0aede6c7cf11
+
+java:S2095Á"LUse try-with-resources or close this "BufferedReader" in a "finally" clause.(ïúâ¯8é›Íı1J$6e4d0df7-898e-440d-ab6f-c154c1600cba
 †
-java:S1126Ú"BReplace this if-then-else statement by a single method invocation.(İ‘š8èÍ±§ı1J$6883808c-8912-43c0-a5ad-bf076412d7ee
+java:S1126õ"BReplace this if-then-else statement by a single method invocation.(İ‘š8û›Íı1J$335d26c8-f152-4a8e-a2ef-a61781caa502
 –
-java:S3776ã"RRefactor this method to reduce its Cognitive Complexity from 29 to the 15 allowed.(•çÄ8éÍ±§ı1J$8c1007ff-5aff-44cf-a0b9-6d63672905c7
-j	java:S131ù""Add a default case to this switch.(õ½èõÿÿÿÿÿ8êÍ±§ı1J$73d4030e-c5a5-4f61-ae84-cfa76661873c
+java:S3776ş"RRefactor this method to reduce its Cognitive Complexity from 29 to the 15 allowed.(•çÄ8˜û›Íı1J$843a1506-4efb-41d0-954f-dd9f29b44b9c
+j	java:S131”""Add a default case to this switch.(õ½èõÿÿÿÿÿ8™û›Íı1J$d3121a0d-444a-4fde-82f2-65a38a127315
 {
-java:S1135­"2Complete the task associated to this TODO comment.(İ÷Çòûÿÿÿÿ8ëÍ±§ı1J$dc12904a-e7ab-44dd-8125-8ea5030ae0bd
-o
-java:S1068/"-Remove this unused "highScore" private field.(¤ãÒ8¯¶±§ı1J$375468af-6879-4a2b-8dea-9408d9bb46c6
-u
-java:S10681"2Remove this unused "highScoreLabel" private field.(ÆïúÕ8¯¶±§ı1J$100d474f-055e-450d-818a-05a24542b2e7
-t
-java:S10685",Remove this unused "FILENAME" private field.(ÑÇ¾Üüÿÿÿÿ8¯¶±§ı1J$2faf97f7-1798-435d-86c9-e2ef14647008
+java:S1135×"2Complete the task associated to this TODO comment.(İ÷Çòûÿÿÿÿ8›û›Íı1J$b0731d64-bb37-4f7e-ac3d-ff460a10b7dd

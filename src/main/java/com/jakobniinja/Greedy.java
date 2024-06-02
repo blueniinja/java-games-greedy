@@ -9,6 +9,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -129,6 +136,10 @@ public class Greedy extends JFrame {
     }
 
     // high score panel
+    getPreviousHighScore();
+    highScoreLabel.setText(HIGH_SCORE_TEXT + highScore);
+    highScoreLabel.setFont(smallFont);
+    mainPanel.add(highScoreLabel);
 
     // button panel
     JPanel buttonPanel = new JPanel();
@@ -162,6 +173,13 @@ public class Greedy extends JFrame {
       score += points + newPoints;
     } else {
       String message = "Do you want to play again?";
+      if (score > highScore) {
+        message = "Your score of " + score + " is a new Highscore!\n " + message;
+        highScore = score;
+        highScoreLabel.setText("" + highScore);
+        saveScore();
+      }
+
       int option = JOptionPane.showConfirmDialog(this, message, "Play Again?", JOptionPane.YES_NO_OPTION);
 
       if (option == JOptionPane.YES_OPTION) {
@@ -182,6 +200,15 @@ public class Greedy extends JFrame {
       round++;
       roundLabel.setText("" + round);
       rollAllDice();
+    }
+  }
+
+  private void saveScore() {
+    try (BufferedWriter out = new BufferedWriter(new FileWriter(FILENAME))) {
+      out.write("" + score);
+    } catch (IOException e) {
+      String message = "Error while writing to file " + FILENAME + ". Could not save your score.";
+      JOptionPane.showMessageDialog(this, message);
     }
   }
 
@@ -287,6 +314,21 @@ public class Greedy extends JFrame {
       }
     }
     return valid;
+  }
+
+  public void getPreviousHighScore() {
+    try {
+      BufferedReader in = new BufferedReader(new FileReader(new File(FILENAME)));
+      String s = in.readLine();
+      highScore = Integer.parseInt(s);
+      in.close();
+    } catch (FileNotFoundException e) {
+      JOptionPane.showMessageDialog(this, FILENAME + " was not found.");
+    } catch (NumberFormatException e) {
+      JOptionPane.showMessageDialog(this, FILENAME + " contains invalid data.");
+    } catch (IOException e) {
+      JOptionPane.showMessageDialog(this, FILENAME + " could not be opened.");
+    }
   }
 
   public static void main(String[] args) {

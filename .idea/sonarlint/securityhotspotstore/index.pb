@@ -12,3 +12,5 @@ Y
 -src/main/java/com/jakobniinja/TitleLabel.java,7\7\7789b46c3a0ab7a6c7306eca2359dc1be0642f0d
 V
 &src/main/java/com/jakobniinja/Die.java,e\0\e0c802583c16bbd00cbd32648bcee0b187643891
+=
+highscore.txt,2\1\21db0b275cb714c40a0d58cb226ab3e28c706247
