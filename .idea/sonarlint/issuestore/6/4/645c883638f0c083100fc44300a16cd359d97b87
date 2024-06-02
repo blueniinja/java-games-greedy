@@ -1,14 +1,22 @@
 
 q
-java:S1604–"(Make this anonymous inner class a lambda(ÿÇŸ¨úÿÿÿÿ8ÿè›Íı1J$1c526612-8c76-4619-9034-4cd311c3aa4a
-k
-java:S1604¢"(Make this anonymous inner class a lambda(øƒ¯$8ÿè›Íı1J$bd6427d1-d33c-4e07-a636-0aede6c7cf11
+java:S1604”"(Make this anonymous inner class a lambda(ÿÇŸ¨úÿÿÿÿ8”¾¼Îı1J$ae6274e0-2f9f-430c-8642-e7bcf7d3071d
+E
+java:S1604"(Make this anonymous inner class a lambda(øƒ¯$8¸´Ğı1
+q
+java:S1604Î"(Make this anonymous inner class a lambda(¤©Òâüÿÿÿÿ8”¾¼Îı1J$65985b52-5385-4975-a34c-adc804e87bf5
+•
+java:S2095½"LUse try-with-resources or close this "BufferedWriter" in a "finally" clause.(´¶Ò”ÿÿÿÿÿ8¤¾¼Îı1J$62ea36f1-8c7f-45e9-9f4e-01fb3c77132f
 
-java:S2095Á"LUse try-with-resources or close this "BufferedReader" in a "finally" clause.(ïúâ¯8é›Íı1J$6e4d0df7-898e-440d-ab6f-c154c1600cba
-†
-java:S1126õ"BReplace this if-then-else statement by a single method invocation.(İ‘š8û›Íı1J$335d26c8-f152-4a8e-a2ef-a61781caa502
-–
-java:S3776ş"RRefactor this method to reduce its Cognitive Complexity from 29 to the 15 allowed.(•çÄ8˜û›Íı1J$843a1506-4efb-41d0-954f-dd9f29b44b9c
-j	java:S131”""Add a default case to this switch.(õ½èõÿÿÿÿÿ8™û›Íı1J$d3121a0d-444a-4fde-82f2-65a38a127315
-{
-java:S1135×"2Complete the task associated to this TODO comment.(İ÷Çòûÿÿÿÿ8›û›Íı1J$b0731d64-bb37-4f7e-ac3d-ff460a10b7dd
+java:S2095®"LUse try-with-resources or close this "BufferedReader" in a "finally" clause.(ïúâ¯8”¾¼Îı1J$4f7b8369-abb0-4dcf-984d-3af1f546d577
+`
+java:S3252r"CUse static access with "java.awt.Component" for "CENTER_ALIGNMENT".(¹¼İá8“Ê´Ğı1
+`
+java:S3252v"CUse static access with "java.awt.Component" for "CENTER_ALIGNMENT".(¥ĞÚ8“Ê´Ğı1
+X
+java:S1161":Add the "@Override" annotation above this method signature(ãÆĞÂ8£Ê´Ğı1
+p
+java:S3776å"RRefactor this method to reduce its Cognitive Complexity from 29 to the 15 allowed.(û‘ïå8°Ê´Ğı1
+D	java:S131ù""Add a default case to this switch.(õ½èõÿÿÿÿÿ8·Ê´Ğı1
+`
+java:S1126£"BReplace this if-then-else statement by a single method invocation.(İ‘š8·Ê´Ğı1

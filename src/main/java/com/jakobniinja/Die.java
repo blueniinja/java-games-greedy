@@ -26,7 +26,7 @@ public class Die extends JPanel {
 
   private int state = AVAILABLE;
 
-  private Random random = new Random();
+  private Random rand = new Random();
 
   public Die() {
     roll();
@@ -43,14 +43,13 @@ public class Die extends JPanel {
     this.value = value;
 
     addMouseListener(new MouseAdapter() {
-      @Override
       public void mouseReleased(MouseEvent e) {
         click();
       }
     });
   }
 
-  private void click() {
+  public void click() {
     if (state == AVAILABLE) {
       state = SELECTED;
       repaint();
@@ -66,19 +65,17 @@ public class Die extends JPanel {
   }
 
   public void paintComponent(Graphics g) {
+
     // fill the background
     switch (state) {
       case AVAILABLE:
-        g.setColor(Color.BLACK);
+        g.setColor(Color.WHITE);
         break;
-
       case SELECTED:
         g.setColor(Color.RED);
         break;
-
       case HELD:
-        g.setColor(Color.GRAY);
-        break;
+        g.setColor(Color.LIGHT_GRAY);
     }
     g.fillRect(0, 0, WIDTH, HEIGHT);
 
@@ -88,47 +85,38 @@ public class Die extends JPanel {
 
     // draw the dots
     switch (value) {
-
+      case 5:
+        drawDot(g, WIDTH / 4, HEIGHT / 4);
+        drawDot(g, WIDTH * 3 / 4, HEIGHT * 3 / 4);
+      case 3:
+        drawDot(g, WIDTH / 4, HEIGHT * 3 / 4);
+        drawDot(g, WIDTH * 3 / 4, HEIGHT / 4);
       case 1:
         drawDot(g, WIDTH / 2, HEIGHT / 2);
         break;
-
       case 6:
         drawDot(g, WIDTH / 4, HEIGHT / 2);
         drawDot(g, WIDTH * 3 / 4, HEIGHT / 2);
-        break;
-
       case 4:
         drawDot(g, WIDTH / 4, HEIGHT / 4);
         drawDot(g, WIDTH * 3 / 4, HEIGHT * 3 / 4);
-        break;
-
       case 2:
         drawDot(g, WIDTH * 3 / 4, HEIGHT / 4);
         drawDot(g, WIDTH / 4, HEIGHT * 3 / 4);
-        break;
     }
+
+    // TODO: break between each case?
   }
 
-  public void drawDot(Graphics g, int x, int y) {
+  private void drawDot(Graphics g, int x, int y) {
     g.fillOval(x - 5, y - 5, 10, 10);
+
   }
 
   public int roll() {
-    int i = random.nextInt(6) + 1;
+    value = rand.nextInt(6) + 1;
     repaint();
-
-    return i;
-  }
-
-  public void hold() {
-    state = HELD;
-    repaint();
-  }
-
-  public void makeAvailable() {
-    state = AVAILABLE;
-    repaint();
+    return value;
   }
 
   public boolean isAvailable() {
@@ -145,5 +133,15 @@ public class Die extends JPanel {
 
   public int getValue() {
     return value;
+  }
+
+  public void hold() {
+    state = HELD;
+    repaint();
+  }
+
+  public void makeAvailable() {
+    state = AVAILABLE;
+    repaint();
   }
 }

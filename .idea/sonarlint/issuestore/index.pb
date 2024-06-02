@@ -14,3 +14,9 @@ V
 &src/main/java/com/jakobniinja/Die.java,e\0\e0c802583c16bbd00cbd32648bcee0b187643891
 =
 highscore.txt,2\1\21db0b275cb714c40a0d58cb226ab3e28c706247
+_
+/src/main/java/com/jakobniinja/apple/Greedy.java,a\f\af4bc5fa734cd64d5b08602802ab4153b9e23f11
+\
+,src/main/java/com/jakobniinja/apple/Die.java,a\a\aab36a32fb37cca8cb48cc7d439bc96c156f02c4
+c
+3src/main/java/com/jakobniinja/apple/TitleLabel.java,a\6\a6798b933552aad24ac134cb586e6cf6215bea7e

@@ -1,0 +1,22 @@
+
+q
+java:S1604•"(Make this anonymous inner class a lambda(ÿÇŸ¨úÿÿÿÿ8ŒÉĞı1J$8e5311a4-36e3-461d-8b02-1b18431c6e4b
+k
+java:S1604Ÿ"(Make this anonymous inner class a lambda(øƒ¯$8ŒÉĞı1J$26bf1867-2f38-4dbb-affb-5eb0abb14558
+q
+java:S1604Ï"(Make this anonymous inner class a lambda(¤©Òâüÿÿÿÿ8ŒÉĞı1J$0d64c456-54ca-4b2d-94f1-1aa541201d6e
+•
+java:S2095¾"LUse try-with-resources or close this "BufferedWriter" in a "finally" clause.(´¶Ò”ÿÿÿÿÿ8˜ÉĞı1J$f0ff766b-5490-4fc8-bf63-ecba8f01b4e6
+
+java:S2095¯"LUse try-with-resources or close this "BufferedReader" in a "finally" clause.(ïúâ¯8˜ÉĞı1J$28155b7d-9605-4bb6-9777-2ba3d6be885e
+†
+java:S3252s"CUse static access with "java.awt.Component" for "CENTER_ALIGNMENT".(¹¼İá8˜ÉĞı1J$5b6d36d7-a5ff-4730-9835-459d3ab2ae90
+†
+java:S3252w"CUse static access with "java.awt.Component" for "CENTER_ALIGNMENT".(¥ĞÚ8˜ÉĞı1J$75c210ef-0c6e-42cc-88f4-24d287bd83aa
+~
+java:S1161‚":Add the "@Override" annotation above this method signature(ãÆĞÂ8˜ÉĞı1J$e5234320-80ce-4dd9-a7ff-ca5510c68307
+j	java:S131ú""Add a default case to this switch.(õ½èõÿÿÿÿÿ8¨ÉĞı1J$b938885d-6375-405d-a6fb-98c8cb3a1ea0
+–
+java:S3776æ"RRefactor this method to reduce its Cognitive Complexity from 29 to the 15 allowed.(û‘ïå8¨ÉĞı1J$ae155678-a99e-4669-813c-6760332c7e43
+†
+java:S1126¤"BReplace this if-then-else statement by a single method invocation.(İ‘š8¨ÉĞı1J$34d9fe42-a45c-481b-b42c-7d8b8f6ef8a1

@@ -23,7 +23,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
-import javax.swing.WindowConstants;
 
 public class Greedy extends JFrame {
 
@@ -55,9 +54,9 @@ public class Greedy extends JFrame {
 
   private JLabel highScoreLabel = new JLabel();
 
-  public static final String HIGH_SCORE_TEXT = "The previous highscore was: ";
+  private static final String HIGHSCORETEXT = "The previous high score was ";
 
-  private static final String FILENAME = "highscore.txt";
+  private static final String FILENAME = "highScore.txt";
 
   public Greedy() {
     initGUI();
@@ -67,7 +66,7 @@ public class Greedy extends JFrame {
     pack();
     setLocationRelativeTo(null);
     setVisible(true);
-    setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    setDefaultCloseOperation(EXIT_ON_CLOSE);
   }
 
   private void initGUI() {
@@ -97,26 +96,26 @@ public class Greedy extends JFrame {
     scoreLabel.setFont(bigFont);
     scorePanel.add(scoreLabel);
 
-    // dice score panel
+    // dice row panel
     JPanel diceRowPanel = new JPanel();
     diceRowPanel.setBackground(Color.GREEN);
     mainPanel.add(diceRowPanel);
 
     // points panel
     JPanel pointsPanel = new JPanel();
-    pointsPanel.setBackground(Color.green);
+    pointsPanel.setBackground(Color.GREEN);
     pointsPanel.setLayout(new BoxLayout(pointsPanel, BoxLayout.Y_AXIS));
     Dimension size = new Dimension(70, 70);
     pointsPanel.setPreferredSize(size);
     diceRowPanel.add(pointsPanel);
 
-    JLabel pointsTitleLabel = new JLabel("Points: ");
+    JLabel pointsTitleLabel = new JLabel("Points:");
     pointsTitleLabel.setFont(smallFont);
-    pointsTitleLabel.setAlignmentX(CENTER_ALIGNMENT);
+    pointsTitleLabel.setAlignmentX(JLabel.CENTER_ALIGNMENT);
     pointsPanel.add(pointsTitleLabel);
 
     pointsLabel.setFont(bigFont);
-    pointsLabel.setAlignmentX(CENTER_ALIGNMENT);
+    pointsLabel.setAlignmentX(JLabel.CENTER_ALIGNMENT);
     pointsPanel.add(pointsLabel);
 
     // dice panel
@@ -127,7 +126,6 @@ public class Greedy extends JFrame {
     for (int i = 0; i < 6; i++) {
       dice[i] = new Die();
       dice[i].addMouseListener(new MouseAdapter() {
-        @Override
         public void mouseReleased(MouseEvent e) {
           clickedDie();
         }
@@ -137,7 +135,7 @@ public class Greedy extends JFrame {
 
     // high score panel
     getPreviousHighScore();
-    highScoreLabel.setText(HIGH_SCORE_TEXT + highScore);
+    highScoreLabel.setText(HIGHSCORETEXT + highScore);
     highScoreLabel.setFont(smallFont);
     mainPanel.add(highScoreLabel);
 
@@ -148,19 +146,16 @@ public class Greedy extends JFrame {
 
     rollButton.setEnabled(false);
     rollButton.addActionListener(new ActionListener() {
-      @Override
       public void actionPerformed(ActionEvent e) {
         updatePoints();
         rollRemainingDice();
         rollButton.setEnabled(false);
       }
     });
-
     buttonPanel.add(rollButton);
-    JButton endRoundButton = new JButton("End Round");
 
+    JButton endRoundButton = new JButton("End Round");
     endRoundButton.addActionListener(new ActionListener() {
-      @Override
       public void actionPerformed(ActionEvent e) {
         endRound();
       }
@@ -171,26 +166,6 @@ public class Greedy extends JFrame {
   private void endRound() {
     if (isValidSelection() && newPoints > 0) {
       score += points + newPoints;
-    } else {
-      String message = "Do you want to play again?";
-      if (score > highScore) {
-        message = "Your score of " + score + " is a new Highscore!\n " + message;
-        highScore = score;
-        highScoreLabel.setText("" + highScore);
-        saveScore();
-      }
-
-      int option = JOptionPane.showConfirmDialog(this, message, "Play Again?", JOptionPane.YES_NO_OPTION);
-
-      if (option == JOptionPane.YES_OPTION) {
-        score = 0;
-        points = 1;
-        scoreLabel.setText("0");
-        roundLabel.setText("1");
-        rollAllDice();
-      } else {
-        System.exit(0);
-      }
     }
     points = 0;
     newPoints = 0;
@@ -200,16 +175,31 @@ public class Greedy extends JFrame {
       round++;
       roundLabel.setText("" + round);
       rollAllDice();
+    } else {
+      String message = "Do you want to play again?";
+      if (score > highScore) {
+        message = "Wow " + score + ", that's a new highest score!\n\n" + message;
+        highScore = score;
+        highScoreLabel.setText("" + highScore);
+        saveScore();
+      }
+      int option = JOptionPane.showConfirmDialog(this, message, "Play Again?", JOptionPane.YES_NO_OPTION);
+      if (option == JOptionPane.YES_OPTION) {
+        score = 0;
+        round = 1;
+        scoreLabel.setText("0");
+        roundLabel.setText("1");
+        rollAllDice();
+      } else {
+        System.exit(0);
+      }
     }
   }
 
-  private void saveScore() {
-    try (BufferedWriter out = new BufferedWriter(new FileWriter(FILENAME))) {
-      out.write("" + score);
-    } catch (IOException e) {
-      String message = "Error while writing to file " + FILENAME + ". Could not save your score.";
-      JOptionPane.showMessageDialog(this, message);
-    }
+  private void updatePoints() {
+    points += newPoints;
+    pointsLabel.setText("" + points);
+    newPoints = 0;
   }
 
   private void rollRemainingDice() {
@@ -222,6 +212,7 @@ public class Greedy extends JFrame {
         count++;
       }
     }
+
     if (count == 0) {
       rollAllDice();
     }
@@ -235,23 +226,7 @@ public class Greedy extends JFrame {
     rollButton.setEnabled(false);
   }
 
-  private void updatePoints() {
-    points += newPoints;
-    pointsLabel.setText("" + points);
-    newPoints = 0;
-  }
-
-  private void clickedDie() {
-    if (isValidSelection()) {
-      rollButton.setEnabled(true);
-    } else {
-      rollButton.setEnabled(false);
-    }
-
-    pointsLabel.setText("" + (points + newPoints));
-  }
-
-  public boolean isValidSelection() {
+  private boolean isValidSelection() {
     int[] count = {0, 0, 0, 0, 0, 0};
     int totalCount = 0;
     boolean valid = true;
@@ -267,9 +242,7 @@ public class Greedy extends JFrame {
 
     if (totalCount == 0) {
       valid = false;
-    } else if (count[0] == 1 && count[1] == 1 &&
-        count[2] == 1 && count[3] == 1 &&
-        count[4] == 1 && count[5] == 1) {
+    } else if (count[0] == 1 && count[1] == 1 && count[2] == 1 && count[3] == 1 && count[4] == 1 && count[5] == 1) {
       newPoints += 250;
     } else {
       for (int i = 0; i < count.length; i++) {
@@ -292,7 +265,6 @@ public class Greedy extends JFrame {
               valid = false;
             }
             break;
-
           case 3:
             if (i == 0) {
               newPoints += 100;
@@ -300,9 +272,8 @@ public class Greedy extends JFrame {
               newPoints += 10 * (i + 1);
             }
             break;
-
           case 4:
-            newPoints += 250;
+            newPoints += 200;
             break;
           case 5:
             newPoints += 300;
@@ -316,7 +287,17 @@ public class Greedy extends JFrame {
     return valid;
   }
 
-  public void getPreviousHighScore() {
+  private void clickedDie() {
+    if (isValidSelection()) {
+      rollButton.setEnabled(true);
+    } else {
+      rollButton.setEnabled(false);
+    }
+
+    pointsLabel.setText("" + (points + newPoints));
+  }
+
+  private void getPreviousHighScore() {
     try {
       BufferedReader in = new BufferedReader(new FileReader(new File(FILENAME)));
       String s = in.readLine();
@@ -324,22 +305,37 @@ public class Greedy extends JFrame {
       in.close();
     } catch (FileNotFoundException e) {
       JOptionPane.showMessageDialog(this, FILENAME + " was not found.");
-    } catch (NumberFormatException e) {
-      JOptionPane.showMessageDialog(this, FILENAME + " contains invalid data.");
     } catch (IOException e) {
       JOptionPane.showMessageDialog(this, FILENAME + " could not be opened.");
+    } catch (NumberFormatException e) {
+      JOptionPane.showMessageDialog(this, FILENAME + " contains invalid data.");
+    }
+  }
+
+  private void saveScore() {
+    try {
+      BufferedWriter out = new BufferedWriter(new FileWriter(new File(FILENAME)));
+      out.write("" + score);
+      out.close();
+    } catch (IOException e) {
+      String message = "Error writing to file " + FILENAME + "\nCould not save your score.";
+      JOptionPane.showMessageDialog(this, message);
     }
   }
 
   public static void main(String[] args) {
-    String className = UIManager.getCrossPlatformLookAndFeelClassName();
     try {
+      String className = UIManager.getCrossPlatformLookAndFeelClassName();
       UIManager.setLookAndFeel(className);
     } catch (Exception e) {
       //
     }
 
-    EventQueue.invokeLater(Greedy::new);
-    // TODO: complete Listing 9-51
+    EventQueue.invokeLater(new Runnable() {
+      public void run() {
+        new Greedy();
+      }
+    });
   }
+
 }
